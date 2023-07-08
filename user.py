@@ -39,13 +39,8 @@ user1 = User("John", "Doe", "jdiddy@gmail.com", 10)
 user2 = User("Joe", "Biden", "jbiddy@gmail.gov", 100)
 user3 = User("Jackie", "Chan", "jchan@gmail.info", 20)
 
-user1.enroll()
-user1.spend_points(50)
-user1.display_info()
-
-user2.enroll()
-user2.spend_points(80)
-user2.display_info()
+user1.display_info().enroll().spend_points(50).display_info()
+user2.enroll().spend_points(80).display_info()
 
 user1.enroll()
 
