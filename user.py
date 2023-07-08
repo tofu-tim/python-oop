@@ -17,3 +17,36 @@ class User:
         else:
             print("Rewards member status: Active")
             print("Gold Card points: " + str(self.gold_card_points))
+    
+    def enroll(self):
+        if self.is_rewards_member:
+            print("User already a member.")
+            return False
+        else:
+            self.is_rewards_member = True
+            self.gold_card_points = 200
+            return True
+
+    def spend_points(self, amount):
+        if amount > self.gold_card_points:
+            print("Insufficient points.")
+        else:
+            self.gold_card_points -= amount
+        return self.gold_card_points
+
+
+user1 = User("John", "Doe", "jdiddy@gmail.com", 10)
+user2 = User("Joe", "Biden", "jbiddy@gmail.gov", 100)
+user3 = User("Jackie", "Chan", "jchan@gmail.info", 20)
+
+user1.enroll()
+user1.spend_points(50)
+user1.display_info()
+
+user2.enroll()
+user2.spend_points(80)
+user2.display_info()
+
+user1.enroll()
+
+user3.spend_points(10)
