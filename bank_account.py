@@ -1,13 +1,29 @@
 class BankAccount:
-    # don't forget to add some default values for these parameters!
-    def __init__(self, int_rate, balance): 
-        # your code here! (remember, instance attributes go here)
-        # don't worry about user info here; we'll involve the User class soon
+    def __init__(self, int_rate, balance):
+        self.int_rate = int_rate
+        self.balance = balance
+
     def deposit(self, amount):
-        # your code here
+        self.balance = self.balance + amount
+        return self.balance
+    
     def withdraw(self, amount):
-        # your code here
+        if self.balance < amount:
+            print("Insufficient funds.")
+            print("Current balance:", str(self.balance))
+        else:
+            self.balance = (self.balance - amount)
+        return self.balance
     def display_account_info(self):
-        # your code here
+        print(self.balance)
+
     def yield_interest(self):
-        # your code here
+        if self.balance <= 0:
+            print("Insufficient funds.")
+            print("Current balance: ", str(self.balance))
+        else:
+            print("Current balance: ", str(self.balance))
+            print("Current interest rate: ", str(self.int_rate))
+            self.balance += self.balance * self.int_rate
+            print("Balance with interest: ", str(self.balance))
+
