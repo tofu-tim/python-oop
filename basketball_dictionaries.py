@@ -35,13 +35,13 @@ players = [
 ]
 
 class Player:
-    def __init__(self, name, age, position, team):
-        self.name = name
-        self.age = age
-        self.position = position
-        self.team = team
-        for key, value in players.iteritems():
-            setattr(self, key, value)
+    def __init__(self, player_info):
+        self.name = player_info.["name"]
+        self.age = player_info.["age"]
+        self.position = player_info.["position"]
+        self.team = player_info.["team"]
 
-
-
+players_list = []
+for player_data in players:
+    player = PLayer(player_data)
+    players_list.append(player)
