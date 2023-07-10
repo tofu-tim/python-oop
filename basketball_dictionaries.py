@@ -34,3 +34,14 @@ players = [
     }
 ]
 
+class Player:
+    def __init__(self, name, age, position, team):
+        self.name = name
+        self.age = age
+        self.position = position
+        self.team = team
+        for key, value in players.iteritems():
+            setattr(self, key, value)
+
+
+
