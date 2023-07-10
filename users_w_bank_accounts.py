@@ -86,3 +86,10 @@ user1.display_user_balance(0)
 
 user2.add_account(0.04, 2000)
 user2.display_user_balance(0)
+
+# transfer money test
+
+user1.transfer_money(2000, user2, 0, 0)
+user1.display_user_balance(0)
+user2.display_user_balance(0)
+
