@@ -45,26 +45,44 @@ class User:
     def __init__(self, name, email):
         self.name = name
         self.email = email
-        self.account = BankAccount(int_rate=0.02, balance=0)
-    
-    def make_withdrawal(self, amount):
-        self.account.withdraw(amount)
+        self.accounts = []
+
+    def add_account(self, int_rate, balance):
+        account = BankAccount(int_rate, balance)
+        self.accounts.append(account)
+
+    def transfer_money(self, amount, other_user, sender_index, recipient_index):
+        from_account = self.accounts[sender_index]
+        to_account = other_user.accounts[recipient_index]
+
+        if from_account.balance >= amount:
+            from_account.withdraw(amount)
+            to_account.deposit(amount)
+            print("Transfer complete.")
+        else:
+            print("Insufficient funds for transfer.")   
+
+    def make_withdrawal(self, account_index, amount):
+        account = self.accounts[account_index]
+        account.withdraw(amount)
         return self
     
-    def display_user_balance(self):
-        self.account.display_account_info()
+    def display_user_balance(self, account_index):
+        account = self.accounts[account_index]
+        print(self.name)
+        account.display_account_info()
     
-    def make_deposit(self, amount):
-        self.account.deposit(amount)
+    def make_deposit(self, account_index, amount):
+        account = self.accounts[account_index]
+        account.deposit(amount)
         return self
+    
+user1 = User("Diego Najera", "dnajera@primitiveskate.com")
+user2 = User("Felipe Mota", "felipe.mota@primitiveskate.com")
 
+# add_account test
+user1.add_account(0.02, 10000)
+user1.display_user_balance(0)
 
-
-user1 = BankAccount(1.05, 1000000)
-user2 = BankAccount(1.10, 42000)
-user3 = BankAccount(1.02, 10000)
-
-user1.display_account_info().deposit(1000000).deposit(1000000).deposit(1000000).withdraw(1).yield_interest().display_account_info()
-user2.display_account_info().deposit(20).deposit(20).withdraw(100).withdraw(100).withdraw(100).withdraw(100).yield_interest().display_account_info()
-
-BankAccount.print_accounts()
+user2.add_account(0.04, 2000)
+user2.display_user_balance(0)
