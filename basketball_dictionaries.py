@@ -36,12 +36,49 @@ players = [
 
 class Player:
     def __init__(self, player_info):
-        self.name = player_info.["name"]
-        self.age = player_info.["age"]
-        self.position = player_info.["position"]
-        self.team = player_info.["team"]
+        self.name = player_info["name"]
+        self.age = player_info["age"]
+        self.position = player_info["position"]
+        self.team = player_info["team"]
 
 players_list = []
 for player_data in players:
-    player = PLayer(player_data)
+    player = Player(player_data)
     players_list.append(player)
+
+kevin = {
+    	"name": "Kevin Durant", 
+    	"age":34, 
+    	"position": "small forward", 
+    	"team": "Brooklyn Nets"
+}
+jason = {
+    	"name": "Jason Tatum", 
+    	"age":24, 
+    	"position": "small forward", 
+    	"team": "Boston Celtics"
+}
+kyrie = {
+    	"name": "Kyrie Irving", 
+    	"age":32, "position": "Point Guard", 
+    	"team": "Brooklyn Nets"
+}
+
+player_kevin = Player(kevin)
+player_jason = Player(jason)
+player_kyrie = Player(kyrie)
+
+new_team = []
+
+for player_data in players:
+    player = Player(player_data)
+    new_team.append(player)
+
+def print_roster():
+    for player in players_list:
+        print("Name:", player.name)
+        print("Age:", player.age)
+        print("Position:", player.position)
+        print()
+
+print_roster()
