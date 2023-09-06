@@ -1,30 +1,58 @@
-# Problem 1: Update values in dictionaries and lists
+# 1. Update values in dictionaries and lists
 
 x = [ [5,2,3], [10,8,9] ] 
-# Change the value 10 in x to 15. Once you're done, x should now be [ [5,2,3], [15,8,9] ].
-x[1][0] = 15
 
+x[1][0] = 15
+print("Problem 1: ")
 print(x)
+print()
+
+# 2. Iterate Through a List of Dictionaries
 
 students = [
-         {'first_name':  'Michael', 'last_name' : 'Jordan'},
-         {'first_name' : 'John', 'last_name' : 'Rosales'},
-         {'first_name' : 'Mark', 'last_name' : 'Guillen'},
-         {'first_name' : 'KB', 'last_name' : 'Tonel'}
+    {'first_name':  'Michael', 'last_name' : 'Jordan'},
+    {'first_name' : 'John', 'last_name' : 'Rosales'},
+    {'first_name' : 'Mark', 'last_name' : 'Guillen'},
+    {'first_name' : 'KB', 'last_name' : 'Tonel'}
     ]
-iterateDictionary(students) 
+def iterateDictionary(students):
+    for student in students:
+        print(f'first_name: {student["first_name"]}, last_name: {student["last_name"]}')
 
+print("Problem 2:")
+iterateDictionary(students)
+print()
 
-sports_directory = {
-    'basketball' : ['Kobe', 'Jordan', 'James', 'Curry'],
-    'soccer' : ['Messi', 'Ronaldo', 'Rooney']
+# 3. Get values from a list of dictionaries
+
+def iterateDictionary2(key, students_list):
+    values_list = []
+    for student in students_list:
+        if key in student:
+            values_list.append(student[key])
+    return values_list
+
+first_names = iterateDictionary2('first_name', students)
+last_names = iterateDictionary2('last_name', students)
+
+print("Problem 3:")
+print("Students first names: ", first_names)
+print("Students last names: ", last_names)
+print()
+
+# 4. Iterate through a dictionary with list values
+
+dojo = {
+    'locations': ['San Jose', 'Seattle', 'Dallas', 'Chicago', 'Tulsa', 'DC', 'Burbank'],
+    'instructors': ['Michael', 'Amy', 'Eduardo', 'Josh', 'Graham', 'Patrick', 'Minh', 'Devon']
 }
-# In the sports_directory, change 'Messi' to 'Andres'
-sports_directory['soccer'][0] = 'Andres'
-print(sports_directory)
 
-z = [ {'x': 10, 'y': 20} ]
-# Change the value 20 in z to 30
+def printInfo(dojo):
+    print("Locations:")
+    [print(location) for location in dojo['locations']]
 
-z[0]['y'] = 30
-print(z)
+    print("Instructors:")
+    [print(instructor) for instructor in dojo['instructors']]
+
+print("Problem 4:")
+printInfo(dojo)
